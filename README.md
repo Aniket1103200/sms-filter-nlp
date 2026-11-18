@@ -1,25 +1,34 @@
-# sms-filter-nlp
-An SMS Filter and Classification Project leveraging Natural Language Processing (NLP). This project uses feature engineering, text preprocessing, and machine learning to classify messages as Spam or Ham. It demonstrates tokenization, vectorization, and pipeline creation for streamlined text analysis and classification.
+# SMS Spam Filter (NLP)
 
-# SMS Filter and Classifier 🚀
+Classifies SMS messages as **spam** or **ham** (not spam).
 
-## Overview
-This project aims to classify SMS messages into **Spam** or **Ham** using **Natural Language Processing (NLP)**. The focus is on building a streamlined classification pipeline with tokenization, vectorization, and Naive Bayes for effective text analysis.
+> 📚 **Course project:** completed while following the Udemy course *Python for Data Science and Machine Learning Bootcamp* (Pierian Data). The dataset and task come from the course.
 
-## Features
-- **Data Visualization**: Gained insights into SMS data patterns.
-- **Text Preprocessing**: Applied tokenization and cleaned data for NLP tasks.
-- **Vectorization**: Leveraged **CountVectorizer** and **TF-IDF** to extract meaningful features.
-- **Pipeline Development**: Created a custom pipeline integrating vectorization and model training.
-- **Sparsity Analysis**: Calculated text vector sparsity for performance tuning.
+## Approach
+1. Explored message length per class (Seaborn, Matplotlib)
+2. Text cleaning: removed punctuation and English stopwords (**NLTK**)
+3. Bag-of-words features with **CountVectorizer**, weighted with **TF-IDF**
+4. **Multinomial Naive Bayes** classifier, combined into a scikit-learn `Pipeline`
 
-## Tools and Libraries
-- **Python**
-- **Scikit-learn** for model building and pipelines
-- **Pandas** and **NumPy** for data operations
-- **Matplotlib** and **Seaborn** for plotting
+## Results (test set: 1,672 messages)
 
-## Getting Started
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Aniket1103200/sms-filter-nlp.git
+| Metric | Value |
+|---|---|
+| Accuracy | **0.96** |
+| Macro F1 | 0.88 |
+| Weighted F1 | 0.96 |
+
+## Data
+SMS Spam Collection dataset (tab-separated file `SMSSpamCollection`). It is **not included** in this repository. Place it at `smsspamcollection/SMSSpamCollection` before running the notebook.
+
+## Tech
+Python · pandas · NLTK · scikit-learn · Matplotlib · Seaborn · Jupyter
+
+## Run it
+```bash
+git clone https://github.com/Aniket1103200/sms-filter-nlp.git
+cd sms-filter-nlp
+pip install -r requirements.txt
+python -m nltk.downloader stopwords
+jupyter notebook sms_spam_filter.ipynb
+```
